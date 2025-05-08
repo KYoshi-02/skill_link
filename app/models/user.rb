@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   belongs_to :company
+  attr_accessor :company_name # 入力式用の仮想属性
+
   has_many :knowhows
   has_many :answers
 
