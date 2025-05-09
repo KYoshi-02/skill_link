@@ -1,11 +1,25 @@
 <h1>SkillLinkへようこそ！</h1>
 
 <% if user_signed_in? %>
-  <p><%= current_user.nick_name %> さん、こんにちは！</p>
-  <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+  <p>
+    <strong><%= current_user.nick_name %></strong> さん、こんにちは！
+  </p>
+  <p>
+    所属会社：<%= current_user.company.name %><br>
+    権限：<%= current_user.admin? ? '管理者' : '一般ユーザー' %>
+  </p>
+  <p>
+    <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </p>
 <% else %>
   <p>
     <%= link_to "ログイン", new_user_session_path %> |
     <%= link_to "新規登録", new_user_registration_path %>
+  </p>
+<% end %>
+
+<% if user_signed_in? && current_user.admin? %>
+  <p>
+    <%= link_to "ユーザー管理ページへ", users_path %>
   </p>
 <% end %>
