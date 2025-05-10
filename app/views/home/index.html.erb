@@ -9,7 +9,7 @@
     権限：<%= current_user.admin? ? '管理者' : '一般ユーザー' %>
   </p>
   <p>
-    <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
   </p>
 <% else %>
   <p>
