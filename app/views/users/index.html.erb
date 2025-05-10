@@ -1,0 +1,22 @@
+<h2>ユーザー管理</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>氏名</th>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th>役割</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.nick_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role == "admin" ? "管理者" : "一般" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
